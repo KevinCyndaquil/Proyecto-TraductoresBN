@@ -1,0 +1,71 @@
+salto db 10,13,'$'
+
+print macro msg
+	mov ah,09H
+	lea dx, msg
+	int 21H
+endm
+
+println macro msg
+	print msg
+	print salto
+endm
+
+getchar macro vrin
+	mov ah,01H
+	int 21H
+	mov vrin, al
+endm
+
+getstring macro vrin
+	mov ah,0AH
+	lea dx,vrin
+	int 21H
+endm
+
+wait macro delay
+	mov cx, delay
+	delay_loop:
+    		mov dx, 65535
+	inner_loop:
+    		dec dx
+    		jnz inner_loop
+    		loop delay
+endm
+
+countchar macro string, count
+	local count_char, exit_count
+
+	mov si, offset string
+	xor cx,cx
+
+	count_char:
+
+		mov al, [si]
+		cmp al,'$'
+		je exit_count
+		inc cx
+		inc si
+		jmp count_char
+	exit_count:	
+		mov count, cx
+
+endm
+
+getentry macro msg, count
+	local get
+
+	mov si,00H
+
+	scan:
+		mov ah,01H
+		int 21H
+		mov msg[si],al
+		
+		inc si
+		cmp al,0DH
+		ja scan
+		jb scan
+	mov count,si
+	
+endm
