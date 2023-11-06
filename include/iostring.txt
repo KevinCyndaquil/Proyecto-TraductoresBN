@@ -1,0 +1,63 @@
+salto db 10,13,'$'
+
+print macro msg
+	mov ah,09H
+	lea dx, msg
+	int 21H
+endm
+
+println macro msg
+	print msg
+	print salto
+endm
+
+leachar macro char
+	mov ah,01H
+	int 21H
+
+	mov char, al
+endm
+
+;read a string writed in console by user
+;@msg; the message read
+;@msglenght: the message's lenght
+leastring macro msg, msglenght
+	mov si, 00H
+
+	write:
+		mov ah, 01H
+		int 21H
+
+		mov msg[si], al
+		inc si
+
+		cmp al, 0DH
+		ja write
+		jb write   
+	inc si
+	;mov msg[si], 13
+	;inc si
+	;mov msg[si], 10
+	;add si, 02H
+	
+	mov msglenght, si	
+endm
+
+countstring macro string, count
+	local count_char, exit_count
+
+	lea si, string
+	xor cx, cx
+
+	count_char:
+
+		mov al, [si]
+		cmp al,'$'
+		je exit_count
+		inc cx
+		inc si
+		jmp count_char
+	exit_count:	
+		mov count, cx
+
+endm

@@ -1,0 +1,116 @@
+;#Este documento contiene todas las macros
+;#necesarias para poder leer y escribir en un
+;#documento de texto (TXT)
+
+;cierra un archivo.
+;@handler: obtenido de la operacion realizada
+closefile macro handler
+    mov ah, 3EH
+    mov bx, handler
+    int 21H
+endm
+
+;crea un directoria en la ruta raiz de emu8086.
+;@filepath: la direccion a crear
+createpath macro filepath
+    mov ah,39H
+    lea dx,filepath
+    int 21H
+endm
+
+;crea o abre un documento si no existe.
+;@filename: la direccion mas el nombre del archivo
+;@openas: 0 solo lectura, 1 solo escritura, 2 lectura / escritura
+;@handler: el handler obtenido
+createfile macro filename, openas, handler    
+    mov ah,3CH
+    mov cx,openas
+    lea dx,filename
+    int 21H
+    
+    mov handler,ax
+endm
+
+;abre un documento.
+;@filename: la direccion mas el nombre del archivo
+;@openas: 0 solo lectura, 1 solo escritura, 2 lectura / escritura
+;@handler: el handler obtenido
+openfile macro filename, openas, handler    
+    mov ah,3DH
+    mov al,openas
+    lea dx,filename
+    int 21H
+    
+    ;verificar jc
+    
+    mov handler,ax
+    
+endm
+
+;lee un archivo.
+;@filename: nombre del archivo
+;@text: el texto leido        
+;@maxchar: el maximo de caracteres a leer
+;@handler: el handler obtenido
+readfile macro filename, read, maxchar, handler  
+    
+    openfile filename, 2, handler
+    
+    ;mov ah, 42h
+    ;mov al, 0  ; Función para obtener la posición actual del puntero
+    ;mov cx, 0  ; Desplazamiento bajo
+    ;mov dx, 0  ; Desplazamiento alto
+    ;int 21h
+    
+    mov ah, 3FH
+    mov bx, handler
+    mov cx, maxchar
+    lea dx, read
+    int 21H
+    
+    ;Comprobar que la lectura fue bien
+        
+endm
+
+writefile macro filename, read, wrote, wrotelenght, handler
+    
+    openfile filename, 2, handler
+    
+    ;Comprobar que todo fue bien
+    
+    mov ah, 3FH
+    mov bx, handler
+    lea dx, read
+    mov cx, 110
+    int 21H
+    
+    ;-----
+    
+    mov ah, 42h
+    mov al, 2  ; Función para obtener la posición actual del puntero
+    mov cx, 0  ; Desplazamiento bajo
+    mov dx, 0  ; Desplazamiento alto
+    int 21h
+    ;jc error ; Si CF=1, ocurrió un error
+    mov cx, ax  ; Tamaño actual del archivo
+
+    ; Retroceder una posición
+    sub cx, 2
+    mov ah, 42h
+    mov al, 0  ; Función para mover el puntero
+    mov dx, cx  ; Desplazamiento bajo
+    mov cx, 0  ; Desplazamiento alto
+    int 21h
+    ;jc error ; Si CF=1, ocurrió un error
+    ;-----
+    
+    ; Escribir el nuevo mensaje al final del archivo
+    mov ah, 40H  ; Función de servicio para escribir en un archivo
+    lea dx, wrote  ; Dirección del nuevo mensaje
+    mov bx, handler  ; Manejador de archivo
+    mov cx, wrotelenght  ; Longitud del mensaje
+    int 21h ; Llamar a la interrupción del sistema
+    
+    ;Comprobar que la lectura fue bien   
+    
+endm
