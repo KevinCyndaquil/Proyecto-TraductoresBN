@@ -1,3 +1,4 @@
+<<<<<<< HEAD:include/paint.txt
 ;Este archivo contiene todas las macros para poder dibujar 
 
 MACRO QUITAFONDO
@@ -784,4 +785,790 @@ QUITAFONDO
     MOV DH, 12D;fila final
     MOV DL, 12D;columna final
     INT 10H   
+=======
+MACRO QUITAFONDO
+	;limpiar pantalla usando scroll
+        mov ah, 06h ;funcion para hacer scroll tambien con 7h
+        mov al,0h ;cantidad de filas a enrollar
+        mov bh, 07h;atributos de color fondo y texto
+        mov CX,00h;fila inicial en ch, columna inicial en cl
+        mov DX, 184fh;fila final en dh, columna final en cl
+        int 10h;ejecuta las interrupciones de video
+ENDM
+
+MACRO SANTA
+
+QUITAFONDO
+      ;**********COLOR ROJO********** 
+    ;*****GORRO*****
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 00D;fila inicial
+    MOV CL, 14D;columna inicial
+    MOV DH, 00D;fila final
+    MOV DL, 18D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 01D;fila inicial
+    MOV CL, 13D;columna inicial
+    MOV DH, 01D;fila final
+    MOV DL, 19D;columna final
+    INT 10H   
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 02D;fila inicial
+    MOV CL, 15D;columna inicial
+    MOV DH, 02D;fila final
+    MOV DL, 20D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 03D;fila inicial
+    MOV CL, 13D;columna inicial
+    MOV DH, 04D;fila final
+    MOV DL, 21D;columna final
+    INT 10H
+    ;*****ABRIGO***** 
+    ;IZQUIERDA
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 16D;fila inicial
+    MOV CL, 12D;columna inicial
+    MOV DH, 16D;fila final
+    MOV DL, 12D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 16D;fila inicial
+    MOV CL, 12D;columna inicial
+    MOV DH, 16D;fila final
+    MOV DL, 12D;columna final
+    INT 10H    
+    
+     
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 17D;fila inicial
+    MOV CL, 13D;columna inicial
+    MOV DH, 19D;fila final
+    MOV DL, 13D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 18D;fila inicial
+    MOV CL, 14D;columna inicial
+    MOV DH, 19D;fila final
+    MOV DL, 14D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 19D;fila inicial
+    MOV CL, 15D;columna inicial
+    MOV DH, 19D;fila final
+    MOV DL, 16D;columna final
+    INT 10H   
+    ;DERECHA
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 16D;fila inicial
+    MOV CL, 23D;columna inicial
+    MOV DH, 16D;fila final
+    MOV DL, 23D;columna final
+    INT 10H  
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 17D;fila inicial
+    MOV CL, 22D;columna inicial
+    MOV DH, 19D;fila final
+    MOV DL, 22D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 18D;fila inicial
+    MOV CL, 21D;columna inicial
+    MOV DH, 19D;fila final
+    MOV DL, 21D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 19D;fila inicial
+    MOV CL, 20D;columna inicial
+    MOV DH, 19D;fila final
+    MOV DL, 20D;columna final
+    INT 10H
+    
+    ;*****MANGAS*****
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 17D;fila inicial
+    MOV CL, 11D;columna inicial
+    MOV DH, 19D;fila final
+    MOV DL, 11D;columna final
+    INT 10H   
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 17D;fila inicial
+    MOV CL, 24D;columna inicial
+    MOV DH, 19D;fila final
+    MOV DL, 24D;columna final
+    INT 10H
+    
+    ;*****PANTALONES*****
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 22D;fila inicial
+    MOV CL, 13D;columna inicial
+    MOV DH, 22D;fila final
+    MOV DL, 22D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 23D;fila inicial
+    MOV CL, 14D;columna inicial
+    MOV DH, 24D;fila final
+    MOV DL, 16D;columna final
+    INT 10H  
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 23D;fila inicial
+    MOV CL, 20D;columna inicial
+    MOV DH, 24D;fila final
+    MOV DL, 22D;columna final
+    INT 10H
+    
+    
+    ;**********COLOR VERDE**********  
+    ;*******B0LSA*******
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 00101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 15D;fila inicial
+    MOV CL, 10D;columna inicial
+    MOV DH, 15D;fila final
+    MOV DL, 11D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 00101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 16D;fila inicial
+    MOV CL, 09D;columna inicial
+    MOV DH, 16D;fila final
+    MOV DL, 10D;columna final
+    INT 10H   
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 00101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 17D;fila inicial
+    MOV CL, 08D;columna inicial
+    MOV DH, 21D;fila final
+    MOV DL, 09D;columna final
+    INT 10H  
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 00101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 22D;fila inicial
+    MOV CL, 09D;columna inicial
+    MOV DH, 22D;fila final
+    MOV DL, 10D;columna final
+    INT 10H
+           
+         
+    ;**********COLOR BLANCO**********
+    ;*****GORRO***** 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 05D;fila inicial
+    MOV CL, 10D;columna inicial
+    MOV DH, 05D;fila final
+    MOV DL, 10D;columna final
+    INT 10H  
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 03D;fila inicial
+    MOV CL, 10D;columna inicial
+    MOV DH, 04D;fila final
+    MOV DL, 11D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 06D;fila inicial
+    MOV CL, 12D;columna inicial
+    MOV DH, 07D;fila final
+    MOV DL, 23D;columna final
+    INT 10H    
+    ;
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 09D;fila inicial
+    MOV CL, 13D;columna inicial
+    MOV DH, 15D;fila final
+    MOV DL, 22D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 11D;fila inicial
+    MOV CL, 12D;columna inicial
+    MOV DH, 13D;fila final
+    MOV DL, 23D;columna final
+    INT 10H   
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 16D;fila inicial
+    MOV CL, 14D;columna inicial
+    MOV DH, 16D;fila final
+    MOV DL, 21D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 17D;fila inicial
+    MOV CL, 15D;columna inicial
+    MOV DH, 17D;fila final
+    MOV DL, 20D;columna final
+    INT 10H  
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 18D;fila inicial
+    MOV CL, 17D;columna inicial
+    MOV DH, 18D;fila final
+    MOV DL, 19D;columna final
+    INT 10H
+       
+    ;**********GUANTES**********   
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 20D;fila inicial
+    MOV CL, 11D;columna inicial
+    MOV DH, 21D;fila final
+    MOV DL, 11D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 21D;fila inicial
+    MOV CL, 12D;columna inicial
+    MOV DH, 21D;fila final
+    MOV DL, 12D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 20D;fila inicial
+    MOV CL, 24D;columna inicial
+    MOV DH, 21D;fila final
+    MOV DL, 24D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 21D;fila inicial
+    MOV CL, 23D;columna inicial
+    MOV DH, 21D;fila final
+    MOV DL, 23D;columna final
+    INT 10H
+    
+    ;**********COLOR AMARILLO**********
+    ;*****CINTURON*****
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 20D;fila inicial
+    MOV CL, 17D;columna inicial
+    MOV DH, 21D;fila final
+    MOV DL, 19D;columna final
+    INT 10H  
+       
+    ;**********COLOR NEGRO**********
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 00001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 00D;fila inicial
+    MOV CL, 00D;columna inicial
+    MOV DH, 00D;fila final
+    MOV DL, 00D;columna final
+    INT 10H
+    
+    ;**********ROSTRO**********
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 09D;fila inicial
+    MOV CL, 15D;columna inicial
+    MOV DH, 11D;fila final
+    MOV DL, 21D;columna final
+    INT 10H
+    ;OJOS
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 00001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 10D;fila inicial
+    MOV CL, 20D;columna inicial
+    MOV DH, 10D;fila final
+    MOV DL, 20D;columna final
+    INT 10H
+           
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 00001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 10D;fila inicial
+    MOV CL, 16D;columna inicial
+    MOV DH, 10D;fila final
+    MOV DL, 16D;columna final
+    INT 10H 
+    
+    ;PECAS
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 11D;fila inicial
+    MOV CL, 15D;columna inicial
+    MOV DH, 11D;fila final
+    MOV DL, 15D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 11D;fila inicial
+    MOV CL, 18D;columna inicial
+    MOV DH, 11D;fila final
+    MOV DL, 18D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 11D;fila inicial
+    MOV CL, 21D;columna inicial
+    MOV DH, 11D;fila final
+    MOV DL, 21D;columna final
+    INT 10H
+      
+ENDM
+
+
+
+
+
+MACRO GORRO
+
+QUITAFONDO
+    ;**********COLOR ROJO**********
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 15D;fila inicial
+    MOV CL, 07D;columna inicial
+    MOV DH, 15D;fila final
+    MOV DL, 29D;columna final
+    INT 10H   
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 14D;fila inicial
+    MOV CL, 08D;columna inicial
+    MOV DH, 14D;fila final
+    MOV DL, 28D;columna final
+    INT 10H    
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 13D;fila inicial
+    MOV CL, 08D;columna inicial
+    MOV DH, 13D;fila final
+    MOV DL, 27D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 11D;fila inicial
+    MOV CL, 09D;columna inicial
+    MOV DH, 12D;fila final
+    MOV DL, 26D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 10D;fila inicial
+    MOV CL, 10D;columna inicial
+    MOV DH, 10D;fila final
+    MOV DL, 26D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 09D;fila inicial
+    MOV CL, 11D;columna inicial
+    MOV DH, 09D;fila final
+    MOV DL, 28D;columna final
+    INT 10H  
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 08D;fila inicial
+    MOV CL, 11D;columna inicial
+    MOV DH, 08D;fila final
+    MOV DL, 29D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 07D;fila inicial
+    MOV CL, 12D;columna inicial
+    MOV DH, 07D;fila final
+    MOV DL, 28D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 06D;fila inicial
+    MOV CL, 13D;columna inicial
+    MOV DH, 06D;fila final
+    MOV DL, 27D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 05D;fila inicial
+    MOV CL, 15D;columna inicial
+    MOV DH, 05D;fila final
+    MOV DL, 26D;columna final
+    INT 10H   
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 01001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 04D;fila inicial
+    MOV CL, 16D;columna inicial
+    MOV DH, 04D;fila final
+    MOV DL, 24D;columna final
+    INT 10H
+    
+    
+    ;**********COLOR BLANCO**********
+  
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 17D;fila inicial
+    MOV CL, 06D;columna inicial
+    MOV DH, 20D;fila final
+    MOV DL, 30D;columna final
+    INT 10H
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 18D;fila inicial
+    MOV CL, 05D;columna inicial
+    MOV DH, 19D;fila final
+    MOV DL, 31D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 16D;fila inicial
+    MOV CL, 07D;columna inicial
+    MOV DH, 16D;fila final
+    MOV DL, 29D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 15D;fila inicial
+    MOV CL, 09D;columna inicial
+    MOV DH, 15D;fila final
+    MOV DL, 27D;columna final
+    INT 10H  
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 09D;fila inicial
+    MOV CL, 29D;columna inicial
+    MOV DH, 12D;fila final
+    MOV DL, 30D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 10D;fila inicial
+    MOV CL, 28D;columna inicial
+    MOV DH, 11D;fila final
+    MOV DL, 31D;columna final
+    INT 10H      
+ENDM
+
+
+
+
+
+MACRO ESTRELLA
+
+QUITAFONDO
+     ;**********COLOR AMARILLO**********
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 08D;fila inicial
+    MOV CL, 08D;columna inicial
+    MOV DH, 08D;fila final
+    MOV DL, 13D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 09D;fila inicial
+    MOV CL, 04D;columna inicial
+    MOV DH, 09D;fila final
+    MOV DL, 17D;columna final
+    INT 10H  
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 10D;fila inicial
+    MOV CL, 05D;columna inicial
+    MOV DH, 10D;fila final
+    MOV DL, 16D;columna final
+    INT 10H  
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 11D;fila inicial
+    MOV CL, 06D;columna inicial
+    MOV DH, 11D;fila final
+    MOV DL, 15D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 12D;fila inicial
+    MOV CL, 07D;columna inicial
+    MOV DH, 13D;fila final
+    MOV DL, 14D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 14D;fila inicial
+    MOV CL, 06D;columna inicial
+    MOV DH, 15D;fila final
+    MOV DL, 15D;columna final
+    INT 10H 
+    
+    ;IZQUIERDA
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 16D;fila inicial
+    MOV CL, 05D;columna inicial
+    MOV DH, 16D;fila final
+    MOV DL, 09D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 17D;fila inicial
+    MOV CL, 05D;columna inicial
+    MOV DH, 17D;fila final
+    MOV DL, 07D;columna final
+    INT 10H   
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 18D;fila inicial
+    MOV CL, 04D;columna inicial
+    MOV DH, 18D;fila final
+    MOV DL, 05D;columna final
+    INT 10H
+    
+    ;DERECHA
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 16D;fila inicial
+    MOV CL, 12D;columna inicial
+    MOV DH, 16D;fila final
+    MOV DL, 16D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 17D;fila inicial
+    MOV CL, 14D;columna inicial
+    MOV DH, 17D;fila final
+    MOV DL, 16D;columna final
+    INT 10H   
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11101111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 18D;fila inicial
+    MOV CL, 16D;columna inicial
+    MOV DH, 18D;fila final
+    MOV DL, 17D;columna final
+    INT 10H
+    
+    ;**********COLOR ROJO********** 
+    ;*****GORRO*****
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 00D;fila inicial
+    MOV CL, 08D;columna inicial
+    MOV DH, 00D;fila final
+    MOV DL, 09D;columna final
+    INT 10H
+           
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 01D;fila inicial
+    MOV CL, 07D;columna inicial
+    MOV DH, 01D;fila final
+    MOV DL, 10D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 02D;fila inicial
+    MOV CL, 06D;columna inicial
+    MOV DH, 02D;fila final
+    MOV DL, 11D;columna final
+    INT 10H 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 03D;fila inicial
+    MOV CL, 08D;columna inicial
+    MOV DH, 03D;fila final
+    MOV DL, 12D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 04D;fila inicial
+    MOV CL, 08D;columna inicial
+    MOV DH, 04D;fila final
+    MOV DL, 13D;columna final
+    INT 10H
+    
+           
+         
+    ;**********COLOR BLANCO**********
+    ;*****GORRO***** 
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 06D;fila inicial
+    MOV CL, 07D;columna inicial
+    MOV DH, 06D;fila final
+    MOV DL, 14D;columna final
+    INT 10H   
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 11111111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 03D;fila inicial
+    MOV CL, 04D;columna inicial
+    MOV DH, 03D;fila final
+    MOV DL, 04D;columna final
+    INT 10H
+    
+       
+    ;**********COLOR NEGRO**********
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 00001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 10D;fila inicial
+    MOV CL, 09D;columna inicial
+    MOV DH, 12D;fila final
+    MOV DL, 09D;columna final
+    INT 10H
+    
+    ;Color de Fondo
+    MOV AH, 06H         ;09H, 06H FUNCION  10 H INTERRUPCION
+    MOV BH, 00001111B   ;Bit indicador-0 Color de fondo-001 Color del texto-1111B
+    MOV CH, 10D;fila inicial
+    MOV CL, 12D;columna inicial
+    MOV DH, 12D;fila final
+    MOV DL, 12D;columna final
+    INT 10H   
+>>>>>>> 92dfc9848614725bcab930a5f73b9a16c4c31411:Dibujos/Dibujos.txt
 ENDM
