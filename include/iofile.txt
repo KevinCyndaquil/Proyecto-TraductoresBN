@@ -95,7 +95,7 @@ writefile macro filename, read, wrote, wrotelenght, handler
     mov cx, ax  ; Tamaño actual del archivo
 
     ; Retroceder una posición
-    sub cx, 2
+    sub cx, 1
     mov ah, 42h
     mov al, 0  ; Función para mover el puntero
     mov dx, cx  ; Desplazamiento bajo
@@ -113,4 +113,14 @@ writefile macro filename, read, wrote, wrotelenght, handler
     
     ;Comprobar que la lectura fue bien   
     
+endm
+
+deletefile macro filename
+    
+    mov ah,41H
+    mov al,00H
+    lea dx, filename
+    int 21H
+    
+    ;Comprobar que la eliminacion fue bine
 endm

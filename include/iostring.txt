@@ -1,3 +1,5 @@
+;Esta macro contiene todos los procedimientos de lectura o escritura de cadenas :)
+
 salto db 10,13,'$'
 
 print macro msg
@@ -18,22 +20,31 @@ leachar macro char
 	mov char, al
 endm
 
+printbyte macro byte
+	mov ah,02H
+	mov dl, byte
+	int 21H
+endm
+
 ;read a string writed in console by user
 ;@msg; the message read
 ;@msglenght: the message's lenght
 leastring macro msg, msglenght
+	local write, exitw
 	mov si, 00H
 
 	write:
 		mov ah, 01H
 		int 21H
-
+  
+        cmp al, 0DH
+        je exitw
+            
 		mov msg[si], al
 		inc si
-
-		cmp al, 0DH
-		ja write
-		jb write   
+		
+		jmp write   
+	exitw:
 	inc si
 	;mov msg[si], 13
 	;inc si
@@ -43,21 +54,19 @@ leastring macro msg, msglenght
 	mov msglenght, si	
 endm
 
-countstring macro string, count
-	local count_char, exit_count
+clear macro
+	;limpiar pantalla usando scroll
+    mov ah, 06H ;funcion para hacer scroll tambien con 7h
+    mov al, 00H ;cantidad de filas a enrollar
+    mov bh, 07H;atributos de color fondo y texto
+    mov cx, 00H;fila inicial en ch, columna inicial en cl
+    mov dx, 184FH;fila final en dh, columna final en cl
+    int 10h;ejecuta las interrupciones de video
 
-	lea si, string
-	xor cx, cx
-
-	count_char:
-
-		mov al, [si]
-		cmp al,'$'
-		je exit_count
-		inc cx
-		inc si
-		jmp count_char
-	exit_count:	
-		mov count, cx
-
+    ;Posicionar el cursor
+    mov bh, 00H ;PAGINA
+    mov dh, 00H ;FILA
+    mov dl, 00H ;COLUMNA
+    mov ah, 02H ;SERVICIO
+    int 10H 
 endm

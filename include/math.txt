@@ -1,0 +1,20 @@
+compare macro num1, num2
+    mov al, num2
+    
+    cmp num1, al
+    ja greater_than:
+    jb less_than:
+    je equals:
+    
+    greater_than:
+        mov al, num1
+        jmp exit        
+    less_than:
+        mov al, num2
+        jmp exit
+    equals:
+        mov al, '$'
+        jmp exit
+    exit:
+    
+endm
